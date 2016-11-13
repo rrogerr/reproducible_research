@@ -1,0 +1,12 @@
+This is my markdown file
+=========================
+
+I'm going to include some r code now:
+
+```{r}
+x <- rnorm(100)
+y <- rnorm(100)
+plot(x, y)
+```
+
+Ok, that was good!
