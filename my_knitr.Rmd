@@ -1,0 +1,43 @@
+---
+title: "my_knitr"
+author: "Rogelio Caballero"
+date: "November 14, 2016"
+output: html_document
+---
+
+##Introduction
+
+```{r fitmodel}
+library(datasets)
+data("airquality")
+fit <- lm(Ozone ~ Wind + Temp + Solar.R, data = airquality)
+```
+
+Here's a table of regression coefficients
+
+```{r showtable, results = "asis"}
+library(xtable)
+xt <- xtable(summary(fit))
+print(xt, type = "html")
+```
+
+##Echoing and hiding results
+
+```{r setoptions, echo=FALSE}
+library(knitr)
+opts_chunk$set(echo = FALSE, results = "hide")
+```
+
+Simulate data:
+
+```{r simulatedata, echo = TRUE}
+x <- rnorm(100)
+y <- x + rnorm(100, sd = 0.5)
+```
+
+Scatterplot of the data:
+
+```{r scatterplot, fig.height=4}
+par(mar = c(5,4,1,1), las = 1)
+plot(x, y, main = "My Simulated Data")
+```
